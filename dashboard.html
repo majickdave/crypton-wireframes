@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>CryptoBox | Accounts</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css">
+      <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+
+  <body>
+    <nav role="navigation">Nav</nav>
+    <main role="main">
+      <header role="banner">
+        <h1>Dashboard</h1>
+        <div class="row">
+          <div id="piechart"></div>
+          <hr>
+          <div>
+            <p>Bitcoin Balance: $800 - 0.05 BTC </p>
+          </div>
+          <div>
+            <p>Ethereum Balance: $400 - 0.5 ETH </p>
+          </div>
+          <div>
+            <p>LiteCoin Balance: $200 - 0.5 LTC </p>
+          </div>
+          <div>
+            <p>Monero Balance: $100 - 0.3 XMR </p>
+          </div>
+          <div>
+            <p>Ripple Balance: $50 - 50 XRP </p>
+          </div>
+        </div>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Draw the chart and set the chart values
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+          ['Balance', 'Dollars'],
+          ['BTC', 800],
+          ['ETH', 400],
+          ['LTC', 200],
+          ['MNR', 100],
+          ['XRP', 50],
+        ]);
+
+          // Optional; add a title and set the width and height of the chart
+          var options = {'title':'Account Split in $USD', 'width':550, 'height':400};
+
+          // Display the chart inside the <div> element with id="piechart"
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+        </script>
+      </header>
+      <section>
+
+        <form action="/index.html">
+          <div>
+            <p>Choose an Amount</p>
+            <input type="number" min=0 value=1 />
+            <select name="coins">
+              <option value="usd">USD💸</option>
+              <option value="btc">BTC</option>
+              <option value="eth">ETH</option>
+              <option value="ltc">LTC</option>
+              <option value="xmr">XMR</option>
+              <option value="xrp">XRP</option>
+            </select>
+            <p>Then convert it to</p>
+            <select name="coins">
+              <option value="btc">BTC</option>
+              <option value="eth">ETH</option>
+              <option value="ltc">LTC</option>
+              <option value="xmr">XMR</option>
+              <option value="xrp">XRP</option>
+              <option value="usd">USD💸</option>
+            </select>
+          </div>
+          <div>
+            <p>result: </p><input value=0.21 type="number"></input>
+          </div>
+
+        </form>
+      </section>
+      <section>
+
+      </section>
+    </main>
+    <footer role="content-info">Footer<a href="/index.html"><button>Home</button></a></footer>
+  </body>
+
+</html>
